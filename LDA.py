@@ -174,12 +174,12 @@ def runLda(titles, tokenized_doc, contents):
     print("투입된 문서의 수 : %d\n설정된 Iteratin 수 : %d\n설정된 토픽의 수 : %d" %(num_docs, NUM_ITER, NUM_TOPICS))
 
 
-    print("\n\n\n performance of this LDA: ")
-    from gensim.models import CoherenceModel
-    # Compute Coherence Score
-    coherence_model_lda = CoherenceModel(model=ldamodel, texts=tokenized_doc, dictionary=id2word, coherence='c_v')
-    coherence_lda = coherence_model_lda.get_coherence()
-    print('\nCoherence Score: ', coherence_lda)
+    # print("\n\n\n performance of this LDA: ")
+    # from gensim.models import CoherenceModel
+    # # Compute Coherence Score
+    # coherence_model_lda = CoherenceModel(model=ldamodel, texts=tokenized_doc, dictionary=id2word, coherence='c_v')
+    # coherence_lda = coherence_model_lda.get_coherence()
+    # print('\nCoherence Score: ', coherence_lda)
 
     return ldaResult
 
