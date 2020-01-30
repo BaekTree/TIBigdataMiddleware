@@ -4,7 +4,7 @@ from common.cmm import SAMP_DATA_DIR
 from common import prs
 
 # download LDA result if True
-DOWNLOAD_DATA_OPTION = False 
+DOWNLOAD_DATA_OPTION = True 
 # Frontend directory to store LDA result
 from common.cmm import LDA_DIR_FE
 
@@ -28,6 +28,16 @@ def runLda(titles, tokenized_doc, contents):
     corpus = [id2word.doc2bow(text) for text in tokenized_doc]
 
     import gensim
+    #0.57
+    lda_model = gensim.models.LdaMulticore(corpus=corpus,
+                                           id2word=id2word,
+                                           num_topics=8, 
+                                           random_state=100,
+                                           chunksize=100,
+                                           passes=30,
+                                           alpha="asymmetric",
+                                           eta="symmetric",
+                                           per_word_topics=True)
     ldamodel = gensim.models.ldamodel.LdaModel(
         corpus, num_topics=NUM_TOPICS, id2word=id2word, passes=NUM_ITER)
     
