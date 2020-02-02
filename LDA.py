@@ -128,7 +128,7 @@ def runLda(titles, tokenized_doc, contents):
     
     전체를 다룰 때는 print topcis을 하고, 특정 토픽을 조사할 때는 show topics을 사용하면 된다.
     """
-    topics = ldamodel.show_topics(num_topics = num_top, num_words=5)
+    topics = ldamodel.show_topics(num_topics = num_top, num_words=5, formatted = False)
     # topics = ldamodel.show_topics(num_words=5, formatted=False)
 
     print("\n\n##########LDA 분석 결과##########")
