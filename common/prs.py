@@ -41,7 +41,7 @@ output : dictionary :
         {"id" : idList, "titles" : titles, "contents" : contents}
 
 """
-def loadData(num_doc)# = NUM_DOC):
+def loadData(num_doc):# = NUM_DOC):
     #if internet connection failed to backend    
     import json
     import sys
