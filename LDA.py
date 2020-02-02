@@ -115,7 +115,7 @@ def runLda(titles, tokenized_doc, contents):
     from gensim.models import CoherenceModel
     coherence_model_lda = CoherenceModel(model=ldamodel, texts=tokenized_doc, dictionary=id2word, coherence='c_v')
     print("coh val : ",coherence_model_lda.get_coherence())
-    print("num topics: " , len(lda_model.print_topics()))
+    print("num topics: " , len(ldamodel.print_topics()))
 
 
     print("\n\n##########LDA 분석 결과##########")
