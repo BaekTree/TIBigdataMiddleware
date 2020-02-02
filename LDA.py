@@ -120,7 +120,7 @@ def runLda(titles, tokenized_doc, contents):
     print("num topics: " , num_top)
     # print("print topics : ", ldamodel.print_topics())
     # print("show topics : ", ldamodel.show_topics(formatted=True))
-"""
+    """
     show topics와 print topics의 차이
     공식 문서에서는 둘이 그냥 비슷하다고만 나와있다.
     description에는 show topics는 선택한 문서들에 대해서만 보여준다.
