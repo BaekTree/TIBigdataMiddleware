@@ -1,5 +1,6 @@
 import LDA
-LDA.LDA(620, isDown=True, dir='./8AS')
+# LDA.LDA(620, isDown=True, dir='./8AS')
+LDA.LDA(30)
 
 # import pandas as pd
 # import json

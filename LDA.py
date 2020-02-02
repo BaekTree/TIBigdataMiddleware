@@ -145,7 +145,7 @@ def runLda(titles, tokenized_doc, contents):
     ]
     """
 
-    topic_lkdhd = sorted(topic_lkdhd, key=itemgetter(1), reverse = True)
+    topic_lkdhd = sorted(topic_lkdhd, key=itemgetter(1), reverse = True)# 같은 토픽 별로 정렬
     num_docs = len(topic_lkdhd)
     topicIdx = -1
     sameTopicDocArrTitle = []
