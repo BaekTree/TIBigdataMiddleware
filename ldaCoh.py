@@ -10,11 +10,11 @@ tknDoc = file["data"]
 # print(tknDoc)
 import gensim.corpora as corpora
 # Create Dictionary
-id2word = corpora.Dictionary(tknDoc)
+id2word = corpora.Dictionary(tknDoc)# 각각의 단어에 고유한 index 부여
 # Create Corpus
 texts = tknDoc
 # Term Document Frequency
-corpus = [id2word.doc2bow(text) for text in texts]
+corpus = [id2word.doc2bow(text) for text in texts]# 개별 문서에서 동일한 단어의 수를 세어서 저장
 # View
 # print(corpus[:1])
 
