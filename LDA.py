@@ -42,7 +42,7 @@ def runLda(titles, tokenized_doc, contents):
     #     corpus, num_topics=NUM_TOPICS, id2word=id2word, passes=NUM_ITER)
     ldamodel = gensim.models.ldamodel.LdaModel(corpus=corpus,
                                            id2word=id2word,
-                                           num_topics=8, 
+                                           num_topics=12, 
                                            random_state=100,
                                            chunksize=100,
                                            passes=30,
@@ -164,11 +164,11 @@ def runLda(titles, tokenized_doc, contents):
             topicIdx = topic_lkdhd[i][1]  # 현재 관심있는 문서 번호 업데이트
         else:
             # sameTopicDocArrTitle 맨 마지막에 새로운 문서번호로 추가!
-            try:
-                sameTopicDocArrTitle[-1].append({"doc": docIndex, "title": titles[docIndex], "words" : tokenized_doc[docIndex], "contents" : contents[docIndex]})
-            except:
-                poorTopIdx = topicIdx
-                print("LDA 에러 발생! 설정한 토픽의 수와 LDA 토픽의 수가 일치 하지 않음.\n 주석 참고: LDA.py : runLDA() : 검색 키워드 'LDA 토픽 이슈'")
+            #try:
+            sameTopicDocArrTitle[-1].append({"doc": docIndex, "title": titles[docIndex], "words" : tokenized_doc[docIndex], "contents" : contents[docIndex]})
+            #except:
+             #poorTopIdx = topicIdx
+            #print("LDA 에러 발생! 설정한 토픽의 수와 LDA 토픽의 수가 일치 하지 않음.\n 주석 참고: LDA.py : runLDA() : 검색 키워드 'LDA 토픽 이슈'")
     """
         LDA 토픽 이슈 :
             현재 문서가 어느 토픽에 해당하는지 판단하는 방법 : 
@@ -181,16 +181,19 @@ def runLda(titles, tokenized_doc, contents):
                 global 변수를 수정해야 할 필요가 있다.
     """
     
-    
+    #print("sam,eTopicDcArrTitile :", len(sameTopicDocArrTitle))
     ldaResult = []
-    for topicIdx, wvtArr in topics:
+    for topicIdx, wvtArr in enumerate(topics):
+        #print("topic idx : " , topicIdx)
+        wvtArr = wvtArr[1]
         arr = []
         for w,v in wvtArr:
             arr.append(w)
-        try:
-            ldaResult.append({"topic" : {"topic_num":topicIdx, "words" : arr}, "doc" : sameTopicDocArrTitle[topicIdx]})
-        except:
-            print("LDA 에러 발생! 설정한 토픽의 수와 LDA 토픽의 수가 일치 하지 않음.\n 주석 참고: LDA.py : runLDA() : 검색 키워드 'LDA 토픽 이슈'")
+        #try:
+        ldaResult.append({"topic" : {"topic_num":topicIdx, "words" : arr}, "doc" : sameTopicDocArrTitle[topicIdx]})
+        #except:
+            # print("LDA 에러 발생! 설정한 토픽의 수와 LDA 토픽의 수가 일치 하지 않음.\n 주석 참고: LDA.py : runLDA() : 검색 키워드 'LDA 토픽 이슈'")
+            # print("index : ", topicIdx)
 
     print("투입된 문서의 수 : %d\n설정된 Iteratin 수 : %d\n설정된 토픽의 수 : %d" %(num_docs, NUM_ITER, NUM_TOPICS))
 
