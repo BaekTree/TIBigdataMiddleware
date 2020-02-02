@@ -116,8 +116,8 @@ def runLda(titles, tokenized_doc, contents):
     coherence_model_lda = CoherenceModel(model=ldamodel, texts=tokenized_doc, dictionary=id2word, coherence='c_v')
     print("coh val : ",coherence_model_lda.get_coherence())
     print("num topics: " , len(ldamodel.print_topics()))
-    print("print topics : ", ldamodel.print_topics())
-    print("show topics : ", ldamodel.show_topics())
+    print("print topics : ", ldamodel.print_topics(formatted=True))
+    print("show topics : ", ldamodel.show_topics(formatted=True))
 
 
     print("\n\n##########LDA 분석 결과##########")
