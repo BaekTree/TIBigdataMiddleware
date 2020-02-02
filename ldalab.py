@@ -34,7 +34,6 @@ lda_model = gensim.models.LdaMulticore(corpus=corpus,
 
 coherence_model_lda = CoherenceModel(model=lda_model, texts=tknDoc, dictionary=id2word, coherence='c_v')
 
-print("index = ", i)
 cmm.showTime()
 print("coh val : ",coherence_model_lda.get_coherence())
 print("num topics: " , len(lda_model.print_topics()))
