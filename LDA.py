@@ -108,7 +108,7 @@ def runLda(titles, tokenized_doc, contents):
         # ldamodel = gensim.models.ldamodel.LdaModel.load(ldaFile)
 
 
-    topics = ldamodel.show_topics(num_words=3, formatted=False)
+    topics = ldamodel.show_topics(num_words=5, formatted=False)
     print("\n\nLDA 분석 완료!")
     
 
@@ -123,6 +123,9 @@ def runLda(titles, tokenized_doc, contents):
     topic_lkdhd = []
     from operator import itemgetter
     for i, topic_list in enumerate(ldamodel[corpus]):
+        # print(topic_list)
+        # topic_list = list(topic_list)
+        topic_list = topic_list[0]
         topic_list = sorted(topic_list, key=itemgetter(1), reverse = True) 
         print(i,'번째 문서의 최대 경향 순서 topic 정렬',topic_list)
         topic_lkdhd.append((i, topic_list[0][0]))
