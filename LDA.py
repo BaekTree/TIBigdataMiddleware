@@ -42,12 +42,12 @@ def runLda(titles, tokenized_doc, contents):
     #     corpus, num_topics=NUM_TOPICS, id2word=id2word, passes=NUM_ITER)
     ldamodel = gensim.models.ldamodel.LdaModel(corpus=corpus,
                                            id2word=id2word,
-                                           num_topics=12, 
+                                           num_topics=9, 
                                            random_state=100,
                                            chunksize=100,
                                            passes=30,
-                                           alpha="asymmetric",
-                                           eta="symmetric",
+                                           alpha=0.91,
+                                           eta=0.91,
                                            per_word_topics=True)
     # Save model to disk.
     if SAVE_LDA_MODEL == True:
