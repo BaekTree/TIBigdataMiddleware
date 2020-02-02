@@ -199,7 +199,7 @@ def runLda(titles, tokenized_doc, contents):
 """
 function : LDA()
 purpose : 자동으로 문서들을 주제들로 분류해준다. gensim 라이브러리 사용
-input : num of documents, num of iteration, num of topics
+input : num of documents, num of iteration, num of topics, 결과 다운로드 옵션, 다운로드 디렉토리 옵션
 output : 주제 별로 분류된 object
 [
     {
@@ -266,7 +266,7 @@ output : 주제 별로 분류된 object
 ]
 """
 
-def LDA(ndoc, nit = NUM_ITER, ntp = NUM_TOPICS):
+def LDA(ndoc, nit = NUM_ITER, ntp = NUM_TOPICS, isDown = DOWNLOAD_DATA_OPTION, dir = LDA_DIR_FE):
 
     # change global value if get new params.
     global NUM_ITER
@@ -295,13 +295,13 @@ def LDA(ndoc, nit = NUM_ITER, ntp = NUM_TOPICS):
     print("\n\n##########Phase 2 : LDA Algo##########")
     result = runLda(titles, tokenized_doc,contents)
 
-    if DOWNLOAD_DATA_OPTION == True:
-        with open(LDA_DIR_FE, 'w', -1, "utf-8") as f:
+    if isDown == True:
+        with open(dir, 'w', -1, "utf-8") as f:
             json.dump(result, f, ensure_ascii=False)
 
     showTime()
     
-    if DOWNLOAD_DATA_OPTION == True:
-        print("Analysis Result has been stored at ",LDA_DIR_FE)
+    if isDown == True:
+        print("Analysis Result has been stored at ",dir)
     print("LDA Analysis Fin!")
     return result
