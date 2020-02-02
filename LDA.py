@@ -38,8 +38,8 @@ def runLda(titles, tokenized_doc, contents):
                                            alpha="asymmetric",
                                            eta="symmetric",
                                            per_word_topics=True)
-    ldamodel = gensim.models.ldamodel.LdaModel(
-        corpus, num_topics=NUM_TOPICS, id2word=id2word, passes=NUM_ITER)
+    # ldamodel = gensim.models.ldamodel.LdaModel(
+        # corpus, num_topics=NUM_TOPICS, id2word=id2word, passes=NUM_ITER)
     
     # Save model to disk.
     if SAVE_LDA_MODEL == True:
