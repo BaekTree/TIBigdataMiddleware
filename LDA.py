@@ -111,6 +111,10 @@ def runLda(titles, tokenized_doc, contents):
     topics = ldamodel.show_topics(num_words=5, formatted=False)
     print("\n\nLDA 분석 완료!")
     
+    print("\n\n##########LDA 성능 측정##########")
+    coherence_model_lda = CoherenceModel(model=lda_model, texts=tknDoc, dictionary=id2word, coherence='c_v')
+    print("coh val : ",coherence_model_lda.get_coherence())
+    print("num topics: " , len(lda_model.print_topics()))
 
 
     print("\n\n##########LDA 분석 결과##########")
