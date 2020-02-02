@@ -223,6 +223,8 @@ def esGetDocs(total):
     if total == 1:
         return esGetADoc()
 
+    if total == 0:
+        raise Exception("문서 수 오류!")
 
     if total % 2 == 0:
             numReqNfDoc = numReqFileDoc = total / 2

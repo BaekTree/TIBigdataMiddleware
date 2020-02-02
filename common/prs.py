@@ -41,21 +41,22 @@ output : dictionary :
         {"id" : idList, "titles" : titles, "contents" : contents}
 
 """
-def loadData(num_doc = NUM_DOC):
+def loadData(num_doc)# = NUM_DOC):
     #if internet connection failed to backend    
     import json
     import sys
     import traceback
     # print(N
     # UM_DOC)
-    global NUM_DOC
-    if NUM_DOC != num_doc:
-        NUM_DOC = num_doc
+    # global NUM_DOC
+    # if NUM_DOC != num_doc:
+    #     print("default num doc value has been updated!")
+    #     NUM_DOC = num_doc
     print("데이터 로드 중...")
     try :
         if BACKEND_CONCT == False:
             raise Exception("서버 연결 불가")
-        corpus = esFunc.esGetDocs(NUM_DOC)
+        corpus = esFunc.esGetDocs(num_doc)
         print("connection to Backend server succeed!")
         print(len(corpus),"개의 문서를 가져옴")# 문서의 수... 내용 없으면 뺀다...
 
@@ -73,7 +74,7 @@ def loadData(num_doc = NUM_DOC):
         
         print("connection to Backend server failed!")
     showTime() 
-    NUM_DOC = len(corpus) # 전체 사용 가능한 문서 수를 업데이트한다. 
+    num_doc = len(corpus) # 전체 사용 가능한 문서 수를 업데이트한다. 
     print("문서 로드 완료!")
     print()
 
@@ -97,9 +98,9 @@ def loadData(num_doc = NUM_DOC):
         else:
             count += 1
 
-    NUM_DOC = len(contents)
+    num_doc = len(contents)# 내용 없는 문서의 수 고려해서 전체 문서의 수 업데이트한다.
     print(count,"개의 문서가 내용이 없음")
-    print("투입된 문서의 수 : %d" %(NUM_DOC))
+    print("투입된 문서의 수 : %d" %(num_doc))
 
     corpusIdTtlCtt = {"id" : idList, "titles" : titles, "contents" : contents}
     return corpusIdTtlCtt
@@ -140,8 +141,8 @@ def dataPrePrcs(contents):
 """
 def readyData(num_doc, isCont = False):
     # NUM_DOC initialize
-    global NUM_DOC
-    NUM_DOC = num_doc
+    # global NUM_DOC
+    # NUM_DOC = num_doc
     idList = []
     titles = []
     contents = []
@@ -155,10 +156,11 @@ def readyData(num_doc, isCont = False):
           "\nBACKEND CONNECTION OPTION : ", str(BACKEND_CONCT),
           "\nRANDOM ORDER OPTION : ", str(RANDOM_MODE)
          )
-    corpusIdTtlCtt = loadData()# load data and update NUM_DOC
+    corpusIdTtlCtt = loadData(num_doc)# load data and update NUM_DOC
     idList = corpusIdTtlCtt["id"]
     titles = corpusIdTtlCtt["titles"]
     contents = corpusIdTtlCtt["contents"]
+
     # phase 2 형태소 분석기 + 내용 없는 문서 지우기
     print("\n\n#####Phase 1-2 : 데이터 전처리 실행#####")
     tokenized_doc = dataPrePrcs(contents)
