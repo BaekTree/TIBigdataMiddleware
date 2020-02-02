@@ -203,6 +203,7 @@ def runLda(titles, tokenized_doc, contents):
     for topicIdx, wvtArr in enumerate(topics):
         #print("topic idx : " , topicIdx)
         # wvtArr = wvtArr[1]
+        print(wvtArr)
         arr = []
         for w,v in wvtArr:
             arr.append(w)
