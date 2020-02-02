@@ -186,8 +186,9 @@ def runLda(titles, tokenized_doc, contents):
                 sameTopicDocArrTitle[-1].append({"doc": docIndex, "title": titles[docIndex], "words" : tokenized_doc[docIndex], "contents" : contents[docIndex]})
             except:
             #  poorTopIdx = topicIdx
-            print("LDA 에러 발생! 설정한 토픽의 수와 LDA 토픽의 수가 일치 하지 않음.\n 주석 참고: LDA.py : runLDA() : 검색 키워드 'LDA 토픽 이슈'")
-    """
+                print("LDA 에러 발생! 설정한 토픽의 수와 LDA 토픽의 수가 일치 하지 않음.\n 주석 참고: LDA.py : runLDA() : 검색 키워드 'LDA 토픽 이슈'")
+    
+        """
         LDA 토픽 이슈 :
             현재 문서가 어느 토픽에 해당하는지 판단하는 방법 : 
                 문서에서 토픽에 대한 확률 분포를 나타내면, 가장 높은 확률에 있는 토픽으로 분류.
@@ -197,7 +198,7 @@ def runLda(titles, tokenized_doc, contents):
                 try - catch으로 index가 없을 때 num_topic을 수정하거나,
                 아니면 그 전에 index checker을 만들어서 미리 수정해야 한다.
                 global 변수를 수정해야 할 필요가 있다.
-    """
+        """
     
     print("sam,eTopicDcArrTitile :", len(sameTopicDocArrTitle))
     ldaResult = []
