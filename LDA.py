@@ -199,10 +199,10 @@ def runLda(titles, tokenized_doc, contents):
                 global 변수를 수정해야 할 필요가 있다.
     """
     
-    #print("sam,eTopicDcArrTitile :", len(sameTopicDocArrTitle))
+    print("sam,eTopicDcArrTitile :", len(sameTopicDocArrTitle))
     ldaResult = []
     for topicIdx, wvtArr in enumerate(topics):
-        #print("topic idx : " , topicIdx)
+        print("topic idx : " , topicIdx)
         wvtArr = wvtArr[1]
         print(wvtArr)
         arr = []
