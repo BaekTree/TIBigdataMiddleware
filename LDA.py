@@ -109,7 +109,18 @@ def runLda(titles, tokenized_doc, contents):
 
 
 
-    """
+    
+    print("\n\nLDA 분석 완료!")
+    
+    print("\n\n##########LDA 성능 측정##########")
+    from gensim.models import CoherenceModel
+    coherence_model_lda = CoherenceModel(model=ldamodel, texts=tokenized_doc, dictionary=id2word, coherence='c_v')
+    print("coh val : ",coherence_model_lda.get_coherence())
+    num_top = len(ldamodel.print_topics())
+    print("num topics: " , num_top)
+    # print("print topics : ", ldamodel.print_topics())
+    # print("show topics : ", ldamodel.show_topics(formatted=True))
+"""
     show topics와 print topics의 차이
     공식 문서에서는 둘이 그냥 비슷하다고만 나와있다.
     description에는 show topics는 선택한 문서들에 대해서만 보여준다.
@@ -117,18 +128,8 @@ def runLda(titles, tokenized_doc, contents):
     
     전체를 다룰 때는 print topcis을 하고, 특정 토픽을 조사할 때는 show topics을 사용하면 된다.
     """
-    topics = ldamodel.print_topics(num_words=5)
+    topics = ldamodel.show_topics(num_topics = num_top, num_words=5)
     # topics = ldamodel.show_topics(num_words=5, formatted=False)
-    print("\n\nLDA 분석 완료!")
-    
-    print("\n\n##########LDA 성능 측정##########")
-    from gensim.models import CoherenceModel
-    coherence_model_lda = CoherenceModel(model=ldamodel, texts=tokenized_doc, dictionary=id2word, coherence='c_v')
-    print("coh val : ",coherence_model_lda.get_coherence())
-    print("num topics: " , len(ldamodel.print_topics()))
-    # print("print topics : ", ldamodel.print_topics())
-    # print("show topics : ", ldamodel.show_topics(formatted=True))
-
 
     print("\n\n##########LDA 분석 결과##########")
     for i, topic in topics:
@@ -202,7 +203,7 @@ def runLda(titles, tokenized_doc, contents):
     ldaResult = []
     for topicIdx, wvtArr in enumerate(topics):
         #print("topic idx : " , topicIdx)
-        # wvtArr = wvtArr[1]
+        wvtArr = wvtArr[1]
         print(wvtArr)
         arr = []
         for w,v in wvtArr:
